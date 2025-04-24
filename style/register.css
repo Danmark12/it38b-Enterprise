@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background: #fff;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.register-section, .image-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.register-section {
+    background: #fff;
+}
+
+.image-section {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #00b0f0; /* Blue for 'MF' */
+}
+
+.register-form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.register-form h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group input {
+    width: 48%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.register-form input, .register-form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.register-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00004d;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.login-link a {
+    color: #00b0f0;
+    text-decoration: none;
+}
+
+.image-section img {
+    width: 300px;
+    max-width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-section:hover img {
+    transform: scale(1.5); /* Zoom in effect */
+}
+
+.image-section .logo-bottom {
+    position: absolute;
+    bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black; /* Default color for 'CLINIC' */
+}
+
+.image-section .logo-bottom span {
+    color: #00b0f0; /* Blue for 'MF' */
+}
