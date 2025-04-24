@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="image-section">
-      <img src="image/doctor.jpg" alt="Doctor">
+      <!-- <img src="image/doctor.jpg" alt="Doctor"> -->
     </div>
   </div>
 </body>

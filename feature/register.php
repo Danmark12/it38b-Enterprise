@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MF Clinic - Register</title>
-  <link rel="stylesheet" href="style/register.css">
+  <title>MF Clinic Register</title>
+  <link rel="stylesheet" href="../style/register.css">
 </head>
 <body>
   <div class="container">
@@ -14,12 +14,12 @@
       <div class="register-form">
         <h2>Sign Up</h2>
         <form action="#" method="POST">
-          <div class="form-group">
+          <div class="input-group">
             <input type="text" name="first_name" placeholder="First Name" required>
             <input type="text" name="last_name" placeholder="Last Name" required>
           </div>
           <input type="email" name="email" placeholder="Enter Email" required>
-          <input type="text" name="phone" placeholder="Phone Number" required>
+          <input type="tel" name="phone_number" placeholder="Enter Phone Number" required>
           <select name="user_type" required>
             <option value="">Select User Type</option>
             <option value="patient">Patient</option>
@@ -36,9 +36,10 @@
         </div>
       </div>
     </div>
+
     <!-- Image Section -->
     <div class="image-section">
-      <img src="image/doctor.jpg" alt="Doctor">
+      <img src="../image/doctor.jpg" alt="Doctor">
     </div>
   </div>
 </body>
