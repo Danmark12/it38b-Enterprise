@@ -1,0 +1,48 @@
+/* admin.css */
+
+/* Base page styling */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Navbar tweaks */
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+  }
+  .nav-link.active {
+    font-weight: bold;
+    color: #0d6efd !important;
+  }
+  
+  /* Container spacing */
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  /* Tables in Users/Logs pages */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+  }
+  table th,
+  table td {
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+  }
+  table th {
+    background-color: #e9ecef;
+    text-align: left;
+  }
+  
+  /* Logout link styling */
+  .navbar-nav .nav-item:last-child .nav-link {
+    color: #ffc107;
+  }
+  

@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($email && $password) {
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
         $stmt->execute(['email' => $email]);
-        $user = $stmt->fetch();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password_hash'])) {
             // Store user info in session
@@ -20,8 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['user_type'] = $user['user_type'];
             $_SESSION['first_name'] = $user['first_name'];
 
-            // Redirect to dashboard or homepage
-            header("Location: dashboard.php");
+            // Redirect to the appropriate dashboard based on user type
+            switch ($user['user_type']) {
+                case 'admin':
+                    header("Location:admin.php");
+                    break;
+                case 'doctor':
+                    header("Location: doctor_dashboard.php");
+                    break;
+                case 'nurse':
+                    header("Location: nurse_dashboard.php");
+                    break;
+                case 'patient':
+                    header("Location: patient_dashboard.php");
+                    break;
+                default:
+                    $error = "Unknown user role.";
+            }
             exit;
         } else {
             $error = "Invalid email or password.";
@@ -31,14 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MF Clinic Login</title>
-  <link rel="stylesheet" href="../style/login.css">
-  require 'config.php';
+  <link rel="stylesheet" href="../style/login.css" />
 </head>
 <body>
   <div class="container">
@@ -47,8 +62,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="logo"><span>MF</span> CLINIC</div>
       <div class="login-form">
         <h2>LOGIN</h2>
-        <form action="#" method="POST">
-          <input type="text" name="email" placeholder="Enter Email or Username" required>
+        <?php if (!empty($error)): ?>
+          <div class="error-message" style="color: red; margin-bottom: 10px;">
+            <?= htmlspecialchars($error) ?>
+          </div>
+        <?php endif; ?>
+        <form action="login.php" method="POST">
+          <input type="text" name="email" placeholder="Enter Email" required>
           <input type="password" name="password" placeholder="Enter Password" required>
           <button type="submit">Log in</button>
         </form>
