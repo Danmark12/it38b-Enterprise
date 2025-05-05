@@ -11,6 +11,7 @@ $patientCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'pati
 $doctorCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'doctor'")->fetchColumn();
 $nurseCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'nurse'")->fetchColumn();
 $recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login FROM users ORDER BY last_login DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ $recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="style/admin.css" />
+  <link rel="stylesheet" href="../style/admin.css" />
 </head>
 <body>
   <div class="container">
@@ -43,16 +44,32 @@ $recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login
       </div>
     </div>
 
-    <!-- Main -->
+    <!-- Main Content -->
     <div class="main">
-      <div class="top-bar">
-        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-        <input type="text" placeholder="Search anything..." />
-      </div>
+    <div class="top-bar">
+  <div class="menu-section">
+    <button class="menu-toggle">
+      <span>&#9776;</span>
+    </button>
+    <div class="dashboard-title">
+      <span>Dashboard</span>
+    </div>
+  </div>
+  <div class="search-notification-section">
+    <div class="search-bar">
+      <input type="text" placeholder="Search anything..." />
+    </div>
+    <div class="notification-icon">
+      <span>&#128276;</span> <!-- Bell icon for notifications -->
+    </div>
+</div>
+</div>
+
+
 
       <h2>Welcome Mr. <?= $_SESSION['first_name'] ?? 'User' ?></h2>
 
-      <div class="cards">
+      <div class="cards"> 
         <div class="card blue">Total Patients <span><?= $patientCount ?></span></div>
         <div class="card yellow">Total Doctors <span><?= $doctorCount ?></span></div>
         <div class="card green">Total Nurses <span><?= $nurseCount ?></span></div>
@@ -82,6 +99,15 @@ $recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login
     </div>
   </div>
 
-  <script src="js/toggle.js"></script>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+    const mainContent = document.querySelector(".main");
+
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("hide");
+      mainContent.classList.toggle("full-width");
+    });
+  </script>
 </body>
 </html>
