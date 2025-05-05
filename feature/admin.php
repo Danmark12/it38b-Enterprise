@@ -1,119 +1,105 @@
--- admin.php --
-<?php
-session_start();
-// Check if admin is logged in
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: login.php');
-    exit;
-}
-// Determine current page
-$page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css">
+  <title>Admin Dashboard - MF CLINIC</title>
+  <link rel="stylesheet" href="../style/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="admin.php">Admin Panel</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="adminNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link <?php echo $page=='dashboard'?'active':'' ?>" href="admin.php?page=dashboard">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link <?php echo $page=='users'?'active':'' ?>" href="admin.php?page=users">Users</a></li>
-        <li class="nav-item"><a class="nav-link <?php echo $page=='logs'?'active':'' ?>" href="admin.php?page=logs">Logs</a></li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link text-warning" href="logout.php">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container mt-4">
-  <?php
-    $allowed = ['dashboard','users','logs'];
-    if (!in_array($page, $allowed)) $page = 'dashboard';
-    include __DIR__ . "/$page.php";
-  ?>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
--- login.php --
-<?php
-session_start();
-$err = '';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
-    // hardcoded credentials for demo
-    if ($user === 'admin' && $pass === 'password') {
-        $_SESSION['admin_logged_in'] = true;
-        header('Location: admin.php');
-        exit;
-    } else {
-        $err = 'Invalid credentials';
-    }
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Login</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head><body class="bg-light">
-<div class="container pt-5">
-  <div class="row justify-content-center">
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-4">Admin Login</h5>
-          <?php if ($err): ?><div class="alert alert-danger"><?=htmlspecialchars($err)?></div><?php endif; ?>
-          <form method="post">
-            <div class="mb-3"><input name="username" class="form-control" placeholder="Username"></div>
-            <div class="mb-3"><input type="password" name="password" class="form-control" placeholder="Password"></div>
-            <button class="btn btn-primary w-100">Login</button>
-          </form>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo"> <span>MF</span> CLINIC </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="#" class="active" onclick="showSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="#" onclick="showSection('users')"><i class="fas fa-users"></i> Users</a></li>
+          <li><a href="#" onclick="showSection('logs')"><i class="fas fa-clipboard-list"></i> Logs</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="admin-info">
+          <img src="avatar.png" alt="Admin" class="avatar">
+          <div>
+            <p>John Doe</p>
+            <small>Admin</small>
+          </div>
         </div>
+        <a href="logout.php" class="logout-btn">Log Out</a>
       </div>
-    </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Dashboard</h1>
+        <input type="text" placeholder="Search anything..." class="search-bar">
+      </header>
+
+      <section id="dashboard" class="content-section">
+        <h2>Welcome Mr. John</h2>
+        <div class="stats">
+          <div class="stat-box blue"> <p>Total Patients</p> <h3>1</h3> </div>
+          <div class="stat-box orange"> <p>Total Doctors</p> <h3>1</h3> </div>
+          <div class="stat-box green"> <p>Total Nurses</p> <h3>1</h3> </div>
+        </div>
+
+        <div class="recent-users">
+          <h3>Recent Users</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Last Logged-in</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="avatar1.png" class="avatar-sm"> Dan Mark Javier</td>
+                <td>3/24/2025</td>
+                <td>Patient</td>
+              </tr>
+              <tr>
+                <td><img src="avatar2.png" class="avatar-sm"> Jonard Pinalas</td>
+                <td>3/24/2025</td>
+                <td>Doctor</td>
+              </tr>
+              <tr>
+                <td><img src="avatar3.png" class="avatar-sm"> John Doe</td>
+                <td>3/24/2025</td>
+                <td>Staff</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="users" class="content-section" style="display:none">
+        <h2>Users</h2>
+        <p>Manage users here...</p>
+      </section>
+
+      <section id="logs" class="content-section" style="display:none">
+        <h2>Logs</h2>
+        <p>View system logs here...</p>
+      </section>
+    </main>
   </div>
-</div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+
+      const links = document.querySelectorAll('.menu a');
+      links.forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
-</html>
-
--- logout.php --
-<?php
-session_start();
-session_destroy();
-header('Location: login.php');
-exit;
-?>
-
--- dashboard.php --
-<h1>Dashboard</h1>
-<p>Welcome to the admin dashboard. Use the menu to navigate.</p>
-
--- users.php --
-<h1>Users</h1>
-<p>List your users here.</p>
-
--- logs.php --
-<h1>Logs</h1>
-<p>View system logs here.</p>
-
--- admin.css --
-body { background: #f5f5f5; font-family: sans-serif; }
-.navbar-brand { font-size: 1.4rem; font-weight: bold; }
-.nav-link { font-size: 1rem; }
-.nav-link.active { font-weight: bold; color: #0d6efd !important; }
-.container { background: #fff; padding: 20px; border-radius: 0.5rem; }
+</html> 

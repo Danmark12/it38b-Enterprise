@@ -2,7 +2,7 @@
 // config.php
 
 $host = 'localhost';       // or your DB host
-$dbname = 'clinic';     // database name
+$dbname = 'mf_clinic';     // database name
 $username = 'root';        // your DB username
 $password = '';            // your DB password
 
