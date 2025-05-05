@@ -1,105 +1,87 @@
+<?php
+session_start();
+require 'config.php';
+
+// Sample user session (for demo; replace with actual logic)
+$_SESSION['first_name'] = "John";
+$_SESSION['user_type'] = "admin";
+
+// Fetch user stats
+$patientCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'patient'")->fetchColumn();
+$doctorCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'doctor'")->fetchColumn();
+$nurseCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'nurse'")->fetchColumn();
+$recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login FROM users ORDER BY last_login DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - MF CLINIC</title>
-  <link rel="stylesheet" href="../style/admin.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style/admin.css" />
 </head>
 <body>
   <div class="container">
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="logo"> <span>MF</span> CLINIC </div>
-      <nav class="menu">
-        <ul>
-          <li><a href="#" class="active" onclick="showSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-          <li><a href="#" onclick="showSection('users')"><i class="fas fa-users"></i> Users</a></li>
-          <li><a href="#" onclick="showSection('logs')"><i class="fas fa-clipboard-list"></i> Logs</a></li>
-        </ul>
-      </nav>
-      <div class="sidebar-bottom">
-        <div class="admin-info">
-          <img src="avatar.png" alt="Admin" class="avatar">
+    <div class="sidebar" id="sidebar">
+      <div class="logo"><span>MF</span> CLINIC</div>
+      <ul class="menu">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Users</a></li>
+        <li><a href="#">Logs</a></li>
+      </ul>
+      <div class="bottom-user">
+        <div class="user-info">
+          <img src="image/user.jpg" alt="User" />
           <div>
-            <p>John Doe</p>
-            <small>Admin</small>
+            <strong><?= $_SESSION['first_name'] ?? 'User' ?></strong>
+            <p><?= ucfirst($_SESSION['user_type']) ?></p>
           </div>
         </div>
         <a href="logout.php" class="logout-btn">Log Out</a>
       </div>
-    </aside>
+    </div>
 
-    <!-- Main content -->
-    <main class="main-content">
-      <header class="topbar">
-        <h1>Dashboard</h1>
-        <input type="text" placeholder="Search anything..." class="search-bar">
-      </header>
+    <!-- Main -->
+    <div class="main">
+      <div class="top-bar">
+        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+        <input type="text" placeholder="Search anything..." />
+      </div>
 
-      <section id="dashboard" class="content-section">
-        <h2>Welcome Mr. John</h2>
-        <div class="stats">
-          <div class="stat-box blue"> <p>Total Patients</p> <h3>1</h3> </div>
-          <div class="stat-box orange"> <p>Total Doctors</p> <h3>1</h3> </div>
-          <div class="stat-box green"> <p>Total Nurses</p> <h3>1</h3> </div>
-        </div>
+      <h2>Welcome Mr. <?= $_SESSION['first_name'] ?? 'User' ?></h2>
 
-        <div class="recent-users">
-          <h3>Recent Users</h3>
-          <table>
-            <thead>
+      <div class="cards">
+        <div class="card blue">Total Patients <span><?= $patientCount ?></span></div>
+        <div class="card yellow">Total Doctors <span><?= $doctorCount ?></span></div>
+        <div class="card green">Total Nurses <span><?= $nurseCount ?></span></div>
+      </div>
+
+      <div class="recent-users">
+        <h3>Recent Users</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Last Logged-in</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($recentUsers as $user): ?>
               <tr>
-                <th>User</th>
-                <th>Last Logged-in</th>
-                <th>Role</th>
+                <td><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name']) ?></td>
+                <td><?= date("m/d/Y", strtotime($user['last_login'])) ?></td>
+                <td><?= ucfirst($user['user_type']) ?></td>
               </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><img src="avatar1.png" class="avatar-sm"> Dan Mark Javier</td>
-                <td>3/24/2025</td>
-                <td>Patient</td>
-              </tr>
-              <tr>
-                <td><img src="avatar2.png" class="avatar-sm"> Jonard Pinalas</td>
-                <td>3/24/2025</td>
-                <td>Doctor</td>
-              </tr>
-              <tr>
-                <td><img src="avatar3.png" class="avatar-sm"> John Doe</td>
-                <td>3/24/2025</td>
-                <td>Staff</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section id="users" class="content-section" style="display:none">
-        <h2>Users</h2>
-        <p>Manage users here...</p>
-      </section>
-
-      <section id="logs" class="content-section" style="display:none">
-        <h2>Logs</h2>
-        <p>View system logs here...</p>
-      </section>
-    </main>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
-  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(section => section.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-
-      const links = document.querySelectorAll('.menu a');
-      links.forEach(link => link.classList.remove('active'));
-      event.target.classList.add('active');
-    }
-  </script>
+  <script src="js/toggle.js"></script>
 </body>
-</html> 
+</html>
