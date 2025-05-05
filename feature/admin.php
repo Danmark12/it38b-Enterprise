@@ -2,15 +2,11 @@
 session_start();
 require 'config.php';
 
-// Sample user session (for demo; replace with actual logic)
-$_SESSION['first_name'] = "John";
-$_SESSION['user_type'] = "admin";
-
-// Fetch user stats
-$patientCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'patient'")->fetchColumn();
-$doctorCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'doctor'")->fetchColumn();
-$nurseCount = $conn->query("SELECT COUNT(*) FROM users WHERE user_type = 'nurse'")->fetchColumn();
-$recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login FROM users ORDER BY last_login DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
+// Simulating logged-in admin; replace with actual login logic
+if (!isset($_SESSION['first_name'])) {
+    $_SESSION['first_name'] = "AdminName"; // Replace with real admin data
+    $_SESSION['user_type'] = "admin";
+}
 
 ?>
 
@@ -21,6 +17,9 @@ $recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="../style/admin.css" />
+  <style>
+    /* Add the styles here from your previous request */
+  </style>
 </head>
 <body>
   <div class="container">
@@ -28,9 +27,9 @@ $recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login
     <div class="sidebar" id="sidebar">
       <div class="logo"><span>MF</span> CLINIC</div>
       <ul class="menu">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Users</a></li>
-        <li><a href="#">Logs</a></li>
+        <li class="<?= (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'active' : '' ?>"><a href="dashboard.php">Dashboard</a></li>
+        <li class="<?= (basename($_SERVER['PHP_SELF']) == 'user.php') ? 'active' : '' ?>"><a href="user.php">Users</a></li>
+        <li class="<?= (basename($_SERVER['PHP_SELF']) == 'logs.php') ? 'active' : '' ?>"><a href="logs.php">Logs</a></li>
       </ul>
       <div class="bottom-user">
         <div class="user-info">
@@ -46,56 +45,22 @@ $recentUsers = $conn->query("SELECT first_name, last_name, user_type, last_login
 
     <!-- Main Content -->
     <div class="main">
-    <div class="top-bar">
-  <div class="menu-section">
-    <button class="menu-toggle">
-      <span>&#9776;</span>
-    </button>
-    <div class="dashboard-title">
-      <span>Dashboard</span>
-    </div>
-  </div>
-  <div class="search-notification-section">
-    <div class="search-bar">
-      <input type="text" placeholder="Search anything..." />
-    </div>
-    <div class="notification-icon">
-      <span>&#128276;</span> <!-- Bell icon for notifications -->
-    </div>
-</div>
-</div>
-
-
-
-      <h2>Welcome Mr. <?= $_SESSION['first_name'] ?? 'User' ?></h2>
-
-      <div class="cards"> 
-        <div class="card blue">Total Patients <span><?= $patientCount ?></span></div>
-        <div class="card yellow">Total Doctors <span><?= $doctorCount ?></span></div>
-        <div class="card green">Total Nurses <span><?= $nurseCount ?></span></div>
+      <div class="top-bar">
+        <div class="menu-section">
+          <button class="menu-toggle">
+            <span>&#9776;</span>
+          </button>
+          <div class="dashboard-title">Dashboard</div>
+        </div>
+        <div class="search-notification-section">
+          <div class="search-bar">
+            <input type="text" placeholder="Search anything..." />
+          </div>
+          <div class="notification-icon" title="Notifications">&#128276;</div>
+        </div>
       </div>
 
-      <div class="recent-users">
-        <h3>Recent Users</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Last Logged-in</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($recentUsers as $user): ?>
-              <tr>
-                <td><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name']) ?></td>
-                <td><?= date("m/d/Y", strtotime($user['last_login'])) ?></td>
-                <td><?= ucfirst($user['user_type']) ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
+      <!-- Content will be loaded here -->
     </div>
   </div>
 

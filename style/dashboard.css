@@ -1,0 +1,62 @@
+/* Styles specific to the dashboard page */
+.content {
+    padding: 20px;
+  }
+  
+  .content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .card.blue:hover {
+    background: #0056b3;
+  }
+  
+  .card.yellow:hover {
+    background: #e67e22;
+  }
+  
+  .card.green:hover {
+    background: #2ecc71;
+  }
+  
+  .recent-users {
+    margin-top: 40px;
+  }
+  
+  .recent-users h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .recent-users table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .recent-users th,
+  .recent-users td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .recent-users tr:hover {
+    background-color: #f9f9f9;
+  }
+  
