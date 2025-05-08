@@ -8,4 +8,3 @@ function log_event($conn, $user_id, $event_type, $description) {
         'description' => $description
     ]);
 }
-?>

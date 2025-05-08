@@ -2,6 +2,7 @@
 // login.php
 session_start();
 require 'config.php';
+require 'functions.php'; // ✅ Include the logging function
 
 $error = "";
 
@@ -23,6 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_type'] = $user['user_type'];
             $_SESSION['first_name'] = $user['first_name'];
+
+            // ✅ Log the login event
+            log_event($conn, $user['id'], 'login', $user['first_name'] . ' logged in.');
 
             // ✅ Redirect based on user type
             switch ($user['user_type']) {
