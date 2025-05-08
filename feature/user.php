@@ -76,6 +76,7 @@ $total_pages = ceil($total_users / $limit);
         <a href="?page=<?= $page + 1 ?>">Next</a>
       <?php endif; ?>
     </div>
+
   </div>
 </body>
 </html>
