@@ -16,3 +16,14 @@ USE mf_clinic;
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 ALTER TABLE users ADD COLUMN last_login DATETIME NULL;
+
+
+CREATE TABLE logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    event_type VARCHAR(50),
+    description TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE

@@ -1,8 +1,16 @@
 /* Styles specific to the dashboard page */
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  font-family: Arial, sans-serif;
+}
+
 .content {
   padding: 20px;
-  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .content h2 {
@@ -11,6 +19,15 @@
   color: #333;
 }
 
+/* Main dashboard container card */
+.dashboard-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards section */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +52,7 @@
   margin-top: 10px;
 }
 
+/* Card color themes */
 .card.gray {
   background-color: #555;
 }
@@ -64,6 +82,7 @@
   background-color: #218838;
 }
 
+/* Recent users table */
 .recent-users {
   margin-top: 40px;
 }
