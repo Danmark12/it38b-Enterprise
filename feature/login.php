@@ -15,19 +15,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password_hash'])) {
-            // ✅ Update last_login
-            $stmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
-            $stmt->execute([$user['id']]);
+            // ✅ Update last_login timestamp
+            $updateStmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE id = :id");
+            $updateStmt->execute(['id' => $user['id']]);
 
-            // Store user info in session
+            // ✅ Store user info in session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_type'] = $user['user_type'];
             $_SESSION['first_name'] = $user['first_name'];
 
-            // Redirect to the appropriate dashboard based on user type
+            // ✅ Redirect based on user type
             switch ($user['user_type']) {
                 case 'admin':
-                    header("Location:admin.php");
+                    header("Location: admin.php");
                     break;
                 case 'doctor':
                     header("Location: doctor_dashboard.php");

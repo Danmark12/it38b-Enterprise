@@ -6,8 +6,8 @@ $limit = 5;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
-// Fetch users with pagination
-$stmt = $conn->prepare("SELECT id, first_name, last_name, user_type, email, created_at FROM users LIMIT :start, :limit");
+// Fetch users with pagination including last_login
+$stmt = $conn->prepare("SELECT id, first_name, last_name, user_type, email, created_at, last_login FROM users LIMIT :start, :limit");
 $stmt->bindValue(':start', $start, PDO::PARAM_INT);
 $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
 $stmt->execute();
@@ -43,12 +43,16 @@ $total_pages = ceil($total_users / $limit);
         <?php foreach ($users as $user): ?>
           <tr>
             <td>
-              <img src="https://i.pravatar.cc/40?u=<?= $user['email'] ?>" class="avatar" alt="Avatar">
+              <img src="https://i.pravatar.cc/40?u=<?= htmlspecialchars($user['email']) ?>" class="avatar" alt="Avatar">
               <?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name']) ?>
             </td>
-            <td><?= ucfirst($user['user_type']) ?></td>
-            <td>Active</td> <!-- You can replace this with real logic later -->
-            <td><strong>N/A</strong></td> <!-- Add a last_login field to show real data -->
+            <td><?= ucfirst(htmlspecialchars($user['user_type'])) ?></td>
+            <td>Active</td> <!-- Placeholder; replace with real logic if needed -->
+            <td>
+              <strong>
+                <?= $user['last_login'] ? date('n/j/Y h:i A', strtotime($user['last_login'])) : 'N/A' ?>
+              </strong>
+            </td>
             <td><strong><?= date('n/j/Y', strtotime($user['created_at'])) ?></strong></td>
           </tr>
         <?php endforeach; ?>
