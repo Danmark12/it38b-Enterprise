@@ -27,3 +27,5 @@ CREATE TABLE logs (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+SELECT * FROM logs ORDER BY created_at DESC;
+
