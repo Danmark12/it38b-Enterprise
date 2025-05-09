@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     header("Location: nurse_dashboard.php");
                     break;
                 case 'patient':
-                    header("Location: patient_dashboard.php");
+                    header("Location: ../patientphp/patient.php");
                     break;
                 default:
                     $error = "Unknown user role.";
