@@ -47,44 +47,55 @@ try {
 }
 ?>
 
-<link rel="stylesheet" href="styles.css">
-
-<div class="section">
-    <h2>Medical Records</h2>
-    <?php if (empty($records)): ?>
-        <p>No medical records found.</p>
-    <?php else: ?>
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>Consultation Date</th>
-                    <th>Note</th>
-                    <th>Note Type</th>
-                    <th>Author</th>
-                    <th>Bill ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($records as $record): ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../patientcss/medical_records.css"> </head>
+<body>
+    <div class="section">
+        <h2>Medical Records</h2>
+        <?php if (empty($records)): ?>
+            <p class="no-records">No medical records found.</p>
+        <?php else: ?>
+            <table class="styled-table">
+                <thead>
                     <tr>
-                        <td><?= htmlspecialchars($record['date']) ?></td>
-                        <td><?= htmlspecialchars($record['note']) ?></td>
-                        <td><?= htmlspecialchars($record['note_type']) ?></td>
-                        <td><?= htmlspecialchars($record['doctor']) ?></td>
-                        <td><?= htmlspecialchars($record['bill_id']) ?></td>
+                        <th>Consultation Date</th>
+                        <th>Note</th>
+                        <th>Note Type</th>
+                        <th>Author</th>
+                        <th>Bill ID</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($records as $record): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($record['date']) ?></td>
+                            <td><?= htmlspecialchars($record['note']) ?></td>
+                            <td><?= htmlspecialchars($record['note_type']) ?></td>
+                            <td><?= htmlspecialchars($record['doctor']) ?></td>
+                            <td><?= htmlspecialchars($record['bill_id']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
 
-        <div class="pagination">
-            <?php if ($totalPages > 1): ?>
-                <button <?php if ($page <= 1) echo 'disabled'; ?> onclick="window.location.href='?page=<?= $page - 1 ?>'">Prev.</button>
-                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                    <a href="?page=<?= $i ?>" <?php if ($i === $page) echo 'class="active"'; ?>><?= $i ?></a>
-                <?php endfor; ?>
-                <button <?php if ($page >= $totalPages) echo 'disabled'; ?> onclick="window.location.href='?page=<?= $page + 1 ?>'">Next</button>
-            <?php endif; ?>
-        </div>
-    <?php endif; ?>
-</div>
+            <div class="pagination">
+                <?php if ($totalPages > 1): ?>
+                    <button <?php if ($page <= 1) echo 'disabled'; ?> onclick="window.location.href='?page=<?= $page - 1 ?>'">Prev.</button>
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <a href="?page=<?= $i ?>" <?php if ($i === $page) echo 'class="active"'; ?>><?= $i ?></a>
+                    <?php endfor; ?>
+                    <button <?php if ($page >= $totalPages) echo 'disabled'; ?> onclick="window.location.href='?page=<?= $page + 1 ?>'">Next</button>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</body>
+</html>

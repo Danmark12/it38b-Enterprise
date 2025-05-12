@@ -1,0 +1,344 @@
+/* patientcss/billing_records.css */
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+.section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 95%;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e0e0e0;
+}
+
+.page-title {
+    font-size: 24px;
+    color: #003366;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.no-records {
+    color: #7f8c8d;
+    text-align: center;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #bdc3c7;
+}
+
+.table-container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 0;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    overflow: hidden;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination-button {
+    padding: 10px 18px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #003366;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    font-size: 1.1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-button:hover {
+    background-color: #87cefa;
+    color: #fff;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-button.active-page {
+    background-color: #003366;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-button.disabled {
+    background-color: #e0e0e0;
+    color: #b0b0b0;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.prev-page {
+    margin-right: 15px;
+}
+
+.next-page {
+    margin-left: 15px;
+}
+
+.page-number {
+    margin: 0 8px;
+}
+
+.pagination-dots {
+    padding: 10px 18px;
+    margin: 0 8px;
+    color: #7f8c8d;
+}
+
+
+.billing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    box-shadow: none;
+    border: none;
+}
+
+.billing-table-header tr {
+    background-color: #e0e0e0;
+    color: #003366;
+    text-align: left;
+    font-weight: bold;
+}
+
+.billing-table th,
+.billing-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.billing-table th {
+    font-size: 1.2em;
+}
+
+.billing-table td {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.billing-table-body tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+.billing-table-body tr:hover {
+    background-color: #fffafa;
+}
+
+.billing-table-body tr:last-of-type td {
+    border-bottom: none;
+}
+
+/* Specific column widths */
+.bill-id-header, .bill-id-data {
+    width: 10%;
+}
+
+.status-header, .status-data {
+    width: 15%;
+}
+
+.details-header, .details-data {
+    width: 35%;
+}
+
+.author-header, .author-data {
+    width: 20%;
+}
+
+.billed-date-header, .billed-date-data {
+    width: 20%;
+}
+/* patientcss/billing_records.css */
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+.section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 95%;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e0e0e0;
+}
+
+.page-title {
+    font-size: 24px;
+    color: #003366;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.no-records {
+    color: #7f8c8d;
+    text-align: center;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #bdc3c7;
+}
+
+.table-container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 0;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    overflow: hidden;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination-button {
+    padding: 10px 18px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #003366;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    font-size: 1.1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-button:hover {
+    background-color: #87cefa;
+    color: #fff;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-button.active-page {
+    background-color: #003366;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-button.disabled {
+    background-color: #e0e0e0;
+    color: #b0b0b0;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.prev-page {
+    margin-right: 15px;
+}
+
+.next-page {
+    margin-left: 15px;
+}
+
+.page-number {
+    margin: 0 8px;
+}
+
+.pagination-dots {
+    padding: 10px 18px;
+    margin: 0 8px;
+    color: #7f8c8d;
+}
+
+
+.billing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    box-shadow: none;
+    border: none;
+}
+
+.billing-table-header tr {
+    background-color: #e0e0e0;
+    color: #003366;
+    text-align: left;
+    font-weight: bold;
+}
+
+.billing-table th,
+.billing-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.billing-table th {
+    font-size: 1.2em;
+}
+
+.billing-table td {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.billing-table-body tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+.billing-table-body tr:hover {
+    background-color: #fffafa;
+}
+
+.billing-table-body tr:last-of-type td {
+    border-bottom: none;
+}
+
+/* Specific column widths */
+.bill-id-header, .bill-id-data {
+    width: 10%;
+}
+
+.status-header, .status-data {
+    width: 15%;
+}
+
+.details-header, .details-data {
+    width: 35%;
+}
+
+.author-header, .author-data {
+    width: 20%;
+}
+
+.billed-date-header, .billed-date-data {
+    width: 20%;
+}
