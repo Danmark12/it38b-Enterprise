@@ -11,13 +11,44 @@ require '../feature/config.php';
     <title>Patient Area</title>
     <link rel="stylesheet" href="../patientcss/patient.css" />
     <style>
-        /* Your existing styles */
+        /* Optional: smooth transition */
+        .sidebar {
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.hide {
+            transform: translateX(-100%);
+        }
+
+        .main.full-width {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 10px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar show" id="sidebar">
-            <button class="close-btn" id="closeBtn" style="display: none;">&times;</button> <div class="logo"><span>MF</span> CLINIC</div>
+            <div class="logo-container">
+                <div class="logo"><span>MF</span> CLINIC</div>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+
             <ul class="menu" id="sidebarMenu">
                 <li class="active">
                     <a href="P_dashboard.php" data-page="P_dashboard.php">Dashboard</a>
@@ -51,7 +82,8 @@ require '../feature/config.php';
                         <span>&#9776;</span>
                     </button>
                     <div class="dashboard-title" id="pageTitle">
-                        Dashboard </div>
+                        Dashboard
+                    </div>
                 </div>
                 <div class="search-notification-section">
                     <div class="search-bar">
@@ -62,7 +94,8 @@ require '../feature/config.php';
             </div>
 
             <div id="contentArea">
-                <?php include 'P_dashboard.php'; ?> </div>
+                <?php include 'P_dashboard.php'; ?>
+            </div>
 
             <script>
                 const menuToggle = document.getElementById("menuToggle");
@@ -71,39 +104,36 @@ require '../feature/config.php';
                 const pageTitle = document.getElementById("pageTitle");
                 const sidebarMenu = document.getElementById("sidebarMenu");
                 const contentArea = document.getElementById("contentArea");
-
-                // Initially set the sidebar to be always visible and main content to not be full-width
-                sidebar.classList.add("show");
-                sidebar.classList.remove("hide");
-                mainContent.classList.remove("full-width");
-
-                // Hide the close button as the sidebar is always open
                 const closeBtn = document.getElementById("closeBtn");
-                if (closeBtn) {
-                    closeBtn.style.display = 'none';
-                }
 
+                // Toggle sidebar on hamburger click
                 menuToggle.addEventListener("click", () => {
-                    sidebar.classList.toggle("show");
-                    mainContent.classList.toggle("full-width");
+                    sidebar.classList.add("show");
+                    sidebar.classList.remove("hide");
+                    mainContent.classList.remove("full-width");
                 });
 
+                // Close sidebar on close button click
+                closeBtn.addEventListener("click", () => {
+                    sidebar.classList.remove("show");
+                    sidebar.classList.add("hide");
+                    mainContent.classList.add("full-width");
+                });
+
+                // Dynamic page loading
                 sidebarMenu.addEventListener("click", (event) => {
                     if (event.target.tagName === 'A') {
-                        event.preventDefault(); // Prevent default link behavior
-
+                        event.preventDefault();
                         const pageUrl = event.target.getAttribute('href');
                         const pageName = event.target.getAttribute('data-page').replace('.php', '').replace(/_/g, ' ');
                         const titleText = pageName.charAt(0).toUpperCase() + pageName.slice(1);
 
-                        // Fetch the content of the clicked page
                         fetch(pageUrl)
                             .then(response => response.text())
                             .then(data => {
                                 contentArea.innerHTML = data;
                                 pageTitle.textContent = titleText;
 
-                                // Update active class on the clicked menu item
                                 document.querySelectorAll('#sidebarMenu li').forEach(li => {
                                     li.classList.remove('active');
                                 });

@@ -29,3 +29,21 @@ CREATE TABLE logs (
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 SELECT * FROM logs ORDER BY created_at DESC;
 
+CREATE TABLE logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    event_type ENUM('create', 'update', 'delete', 'login', 'logout') NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS `appointments` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT NOT NULL,
+    `appointment_date` DATE NOT NULL,
+    `description` TEXT NOT NULL,
+    `status` ENUM('pending', 'completed', 'cancelled') DEFAULT 'pending',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+);
