@@ -29,21 +29,29 @@ CREATE TABLE logs (
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 SELECT * FROM logs ORDER BY created_at DESC;
 
-CREATE TABLE logs (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    event_type ENUM('create', 'update', 'delete', 'login', 'logout') NOT NULL,
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `event_type` enum('create','update','delete','login','logout') NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `appointments` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `user_id` INT NOT NULL,
-    `appointment_date` DATE NOT NULL,
-    `description` TEXT NOT NULL,
-    `status` ENUM('pending', 'completed', 'cancelled') DEFAULT 'pending',
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
-);
+CREATE TABLE `appointments` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `appointment_date` date NOT NULL,
+  `description` text NOT NULL,
+  `status` enum('pending','completed','cancelled') DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE `billing_records` (
+  `bill_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `billed_date` date DEFAULT NULL,
+  `details` varchar(255) DEFAULT NULL,
+  `status` enum('Pending','Completed','Cancelled','Overdue','Draft') DEFAULT NULL,
+  `author` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
