@@ -1,0 +1,135 @@
+.dashboard-container {
+    padding: 20px;
+}
+
+.overview-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.performance-card, .total-patients-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+}
+
+.chart-container {
+    height: 150px; /* Adjust as needed */
+    position: relative; /* For Chart.js to size correctly */
+    margin-bottom: 10px;
+}
+
+.total-patients-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-count {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #007bff; /* Example color */
+    margin-bottom: 5px;
+}
+
+.performance-details, .patient-details {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.indicator.up {
+    color: green;
+}
+
+.indicator.down {
+    color: red;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #00aaff;
+}
+
+.data-tables {
+    display: flex;
+    gap: 20px;
+}
+
+.appointments-table, .patients-table {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+}
+
+.data-tables h3 {
+    margin-bottom: 10px;
+}
+
+.table-responsive {
+    overflow-x: auto; /* For horizontal scrolling on smaller screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.view-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.view-button:hover {
+    background-color: #0056b3;
+}
+
+.table-footer {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.table-footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.table-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .overview-cards {
+        flex-direction: column;
+    }
+
+    .data-tables {
+        flex-direction: column;
+    }
+}

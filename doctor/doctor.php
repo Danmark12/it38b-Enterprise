@@ -8,8 +8,8 @@ require '../feature/config.php';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Patient Area</title>
-    <link rel="stylesheet" href="../patientcss/patient.css" />
+    <title>Doctor Area</title>
+    <link rel="stylesheet" href="../doctorcss/doctor.css" />
     <style>
         /* Optional: smooth transition */
         .sidebar {
@@ -51,7 +51,7 @@ require '../feature/config.php';
 
             <ul class="menu" id="sidebarMenu">
                 <li class="active">
-                    <a href="P_dashboard.php" data-page="P_dashboard.php">Dashboard</a>
+                    <a href="dashboard.php" data-page="dashboard.php">Dashboard</a>
                 </li>
                 <li>
                     <a href="patients.php" data-page="patients.php  ">Patients</a>
@@ -94,7 +94,7 @@ require '../feature/config.php';
             </div>
 
             <div id="contentArea">
-                <?php include 'P_dashboard.php'; ?>
+                <?php include 'dashboard.php'; ?>
             </div>
 
             <script>

@@ -51,7 +51,7 @@ require '../feature/config.php';
 
             <ul class="menu" id="sidebarMenu">
                 <li class="active">
-                    <a href="P_dashboard.php" data-page="P_dashboard.php">Dashboard</a>
+                    <a href="dashboard.php" data-page="dashboard.php">Dashboard</a>
                 </li>
                 <li>
                     <a href="appointments.php" data-page="appointments.php">Appointments</a>
@@ -94,7 +94,7 @@ require '../feature/config.php';
             </div>
 
             <div id="contentArea">
-                <?php include 'P_dashboard.php'; ?>
+                <?php include 'dashboard.php'; ?>
             </div>
 
             <script>
