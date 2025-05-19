@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MF Clinic</title>
+    <title>About Us - MF Clinic</title>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff; /* White background */
+            background-color: #fff;
             color: #333;
             line-height: 1.6;
         }
@@ -35,20 +35,19 @@
         }
 
         .logo span:first-child {
-            color: #008080; /* Teal for "MF" */
+            color: #008080;
         }
 
         .logo span:last-child {
-            color: #000; /* Black for "CLINIC" */
+            color: #000;
         }
-
 
         nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
-            margin-left: auto; /* Push nav to the right */
+            margin-left: auto;
         }
 
         nav ul li {
@@ -63,7 +62,7 @@
         }
 
         nav ul li a:hover {
-            color: #008080; /* Teal hover */
+            color: #008080;
         }
 
         .auth-buttons {
@@ -78,18 +77,18 @@
             margin-left: 20px;
             padding: 10px 15px;
             border-radius: 5px;
-            border: 1px solid #008080; /* Teal border */
+            border: 1px solid #008080;
             background-color: #fff;
             transition: background-color 0.3s ease;
-            color: #008080; /* Teal text */
+            color: #008080;
         }
 
         .auth-buttons a:hover {
-            background-color: #e0f7fa; /* Light teal hover for buttons */
+            background-color: #e0f7fa;
         }
 
         .auth-buttons .signup-button {
-            background-color: #008080; /* Teal sign-up button */
+            background-color: #008080;
             color: #fff;
             border: none;
         }
@@ -98,57 +97,62 @@
             background-color: #006666;
         }
 
-        .hero {
+        main {
+            padding: 60px 30px;
+            margin-top: 20px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 80px 30px;
-            border-radius: 10px;
-            margin: 20px;
+            flex-direction: column;
+            align-items: flex-start; /* Changed to flex-start to align content to the left */
         }
 
-        .hero-content {
-            flex: 1;
-            padding-right: 40px;
+        .about-us-content {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .hero-content h1 {
-            font-size: 3.5em;
-            color: #000; /* Black heading */
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            color: #008080; /* Teal tagline */
-            font-size: 1.5em;
+        .about-us-header {
+            font-size: 2.5em;
+            color: #000;
             margin-bottom: 30px;
+            text-align: left;
+            margin-left: 0; /* Added to ensure left alignment */
+        }
+        .about-us-header span{
+            color:#008080
         }
 
-        .hero-content .book-appointment-button {
-            display: inline-block;
-            background-color: #000080; /* Dark blue button */
-            color: #fff;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+        .about-us-text {
             font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-align: left;  /* Added to ensure left alignment */
+            margin-left: 0; /* Added to ensure left alignment */
+        }
+        .about-us-text span{
+            color:#008080;
+            font-weight: bold;
         }
 
-        .hero-content .book-appointment-button:hover {
-            background-color: #000066;
+        .about-us-services-header {
+            font-size: 2em;
+            color: #000;
+            margin-bottom: 20px;
+            text-align: left;
+            margin-left: 0; /* Added to ensure left alignment */
+        }
+        .about-us-services-header span{
+            color: #008080;
         }
 
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 80%;
-            height: auto;
+        .services-section {
+            background-color: #e0f2f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 100%;
         }
 
         footer {
@@ -160,7 +164,6 @@
             margin-top: 20px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -185,31 +188,29 @@
             .auth-buttons {
                 flex-direction: column;
             }
-            .auth-buttons a{
+
+            .auth-buttons a {
                 margin-left: 0;
                 margin-top: 10px;
             }
 
-            .hero {
-                flex-direction: column;
+            main {
+                padding: 30px 20px;
+            }
+
+            .about-us-content {
                 text-align: center;
-                padding: 60px 20px;
             }
 
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 30px;
+            .about-us-header {
+                font-size: 2em;
             }
 
-            .hero-content h1{
-                font-size: 3em;
+            .about-us-text {
+                font-size: 1em;
             }
-            .hero-content p{
-                font-size: 1.2em;
-            }
-
-            .hero-image img {
-                max-width: 100%;
+             .about-us-services-header{
+                font-size: 1.5em;
             }
         }
     </style>
@@ -221,25 +222,28 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="about_us.php">About</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="feature/login.php">Log In</a>
-            <a href="feature/register.php" class="signup-button">Sign Up</a>
+            <a href="#">Log In</a>
+            <a href="#" class="signup-button">Sign Up</a>
         </div>
     </header>
 
-    <main class="hero">
-        <div class="hero-content">
-            <h1>MF CLINIC</h1>
-            <p>We're always ready to help you.<br>You care, we care.</p>
-            <a href="#" class="book-appointment-button">Book an appointment!</a>
-        </div>
-        <div class="hero-image">
-            <img src="image/doctor.jpg" alt="Friendly Doctor">
+    <main>
+        <div class="about-us-content">
+            <h1 class="about-us-header"><span>About</span> Us</h1>
+            <p class="about-us-text">
+                <span>MF</span> Clinic offers fast, reliable, and patient-centered healthcare services using a smart system that simplifies appointments, records,
+                and billing for a better clinic experience.
+            </p>
+            <h2 class="about-us-services-header"><span>MF</span> Clinic Services</h2>
+            <div class="services-section">
+                <p>Detailed information about the services offered by MF Clinic would be placed here.  This could include lists of services, descriptions of treatments, information about specialties, etc.  Since the image doesn't provide this detail, I'll leave this as a placeholder.</p>
+            </div>
         </div>
     </main>
 
