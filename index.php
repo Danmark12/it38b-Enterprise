@@ -223,7 +223,7 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about_us.php">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contacts.php">Contact</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">

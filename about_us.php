@@ -222,14 +222,14 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about_us.php">About</a></li>
+                <li><a href="contacts.php">Contact</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="#">Log In</a>
-            <a href="#" class="signup-button">Sign Up</a>
+            <a href="feature/login.php">Log In</a>
+            <a href="feature/register.php" class="signup-button">Sign Up</a>
         </div>
     </header>
 
