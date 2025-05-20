@@ -1,0 +1,307 @@
+/* ../doctorcss/appointment.css */
+
+/* General Body and Container Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Light gray background */
+    padding: 1.5rem; /* Overall page padding */
+}
+
+.relative { /* Container for absolute positioning of modal */
+    position: relative;
+}
+
+/* Top Section: Title and Add Button */
+.flex.justify-between.items-start.mb-4 > div:first-child {
+    /* Styles for the "Add appointment to the schedule" and button */
+}
+
+.text-2xl.font-semibold.text-gray-800.mb-2 {
+    color: #2d3748; /* Dark gray title */
+    margin-bottom: 0.75rem;
+}
+
+#add-appointment-button {
+    background-color: #3b82f6; /* Blue button */
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+#add-appointment-button:hover {
+    background-color: #2c69d1;
+}
+
+/* Top Section: Appointment Counts */
+.text-right {
+    text-align: right;
+}
+
+.text-3xl.font-bold {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.text-blue-500 {
+    color: #3b82f6; /* Blue count */
+}
+
+.text-yellow-500 {
+    color: #facc15; /* Yellow count for pending */
+}
+
+.text-green-500 {
+    color: #16a34a; /* Green count for completed */
+}
+
+.text-sm.text-gray-600 {
+    color: #718096; /* Subtitle for counts */
+    font-size: 0.875rem;
+}
+
+/* Main Grid Layout */
+.grid.grid-cols-1.lg\:grid-cols-2.gap-6 {
+    margin-top: 1.5rem;
+}
+
+/* Recent Patients Section */
+.bg-white.shadow-md.rounded-lg.p-4:first-child { /* Targeting the Recent Patients card */
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.text-lg.font-semibold.text-gray-700.mb-2 { /* Section titles */
+    color: #4a5568;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.list-disc.pl-5 {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    color: #4a5568;
+}
+
+.list-disc.pl-5 li {
+    margin-bottom: 0.25rem;
+}
+
+.text-gray-500 {
+    color: #a0aec0;
+}
+
+/* Appointment Requests Section */
+.bg-white.shadow-md.rounded-lg.p-4:nth-child(2) { /* Targeting the Appointment Requests card */
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+#view-all-requests-button {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+#view-all-requests-button:hover {
+    color: #2c69d1;
+}
+
+.divide-y.divide-gray-200 > div {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.divide-y.divide-gray-200 > div:last-child {
+    border-bottom: none;
+}
+
+.py-2.flex.items-center.justify-between > div:first-child p {
+    margin-bottom: 0.125rem;
+}
+
+.font-semibold.text-gray-800 {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.bg-green-500, .bg-red-500 {
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.bg-green-500:hover {
+    background-color: #15803d;
+}
+
+.bg-red-500:hover {
+    background-color: #c53030;
+}
+
+.mr-2 {
+    margin-right: 0.5rem;
+}
+
+/* New List of Patients Section */
+.bg-white.shadow-md.rounded-lg.p-4.mt-6 { /* Targeting the New List of Patients card */
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 1.5rem;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.min-w-full.divide-y.divide-gray-200 {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bg-gray-100 th {
+    background-color: #f7fafc;
+    color: #4a5568;
+    font-weight: 500;
+    text-align: left;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.bg-white.divide-y.divide-gray-200 td {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    color: #2d3748;
+    white-space: nowrap;
+}
+
+.bg-white.divide-y.divide-gray-200 tr:nth-child(even) {
+    background-color: #edf2f7;
+}
+
+.text-gray-900 {
+    color: #2d3748;
+}
+
+.text-gray-500 {
+    color: #a0aec0;
+}
+
+/* Add Appointment Modal */
+#add-appointment-modal {
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20; /* Above the overlay */
+    width: 90%; /* Adjust width as needed */
+    max-width: 500px; /* Maximum width of the modal */
+}
+
+#add-appointment-modal h2 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+#add-appointment-modal label {
+    display: block;
+    color: #4a5568;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+#add-appointment-modal input[type="date"],
+#add-appointment-modal input[type="time"],
+#add-appointment-modal input[type="text"],
+#add-appointment-modal textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+#add-appointment-modal textarea {
+    min-height: 100px;
+}
+
+#add-appointment-modal .flex.justify-end button {
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+#add-appointment-modal .flex.justify-end button[type="submit"] {
+    background-color: #3b82f6;
+    color: white;
+}
+
+#add-appointment-modal .flex.justify-end button[type="submit"]:hover {
+    background-color: #2c69d1;
+}
+
+#add-appointment-modal .flex.justify-end button[type="button"] {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    margin-left: 0.5rem;
+}
+
+#add-appointment-modal .flex.justify-end button[type="button"]:hover {
+    background-color: #d1d5db;
+}
+
+/* Overlay Style */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Below the modal */
+}
+
+/* Responsive Adjustments (Example for smaller screens) */
+@media (max-width: 768px) {
+    .lg\:grid-cols-2 {
+        grid-template-columns: 1fr; /* Stack sections on smaller screens */
+    }
+
+    .text-right {
+        text-align: left; /* Align counts to the left on smaller screens */
+        margin-top: 1rem;
+    }
+}

@@ -1,0 +1,113 @@
+/* Styles specific to the dashboard page */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Main dashboard container card */
+.dashboard-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards section */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  flex: 1 1 200px;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card span {
+  display: block;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Card color themes */
+.card.gray {
+  background-color: #555;
+}
+.card.gray:hover {
+  background-color: #444;
+}
+
+.card.blue {
+  background-color: #007BFF;
+}
+.card.blue:hover {
+  background-color: #0056b3;
+}
+
+.card.yellow {
+  background-color: #FFC107;
+  color: #333;
+}
+.card.yellow:hover {
+  background-color: #e0a800;
+}
+
+.card.green {
+  background-color: #28A745;
+}
+.card.green:hover {
+  background-color: #218838;
+}
+
+/* Recent users table */
+.recent-users {
+  margin-top: 40px;
+}
+
+.recent-users h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.recent-users table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recent-users th,
+.recent-users td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.recent-users tr:hover {
+  background-color: #f9f9f9;
+}

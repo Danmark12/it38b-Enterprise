@@ -1,0 +1,176 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1f2937;
+    color: #f8fafc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    width: 95%;
+    padding: 2rem;
+    background-color: #111827;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #e5e7eb;
+    text-align: center;
+}
+
+.metrics-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+
+
+.metric-card {
+    background-color: #1d4ed8;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 7px -3px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #4338ca;
+    flex: 1; /* Allow cards to take up equal space */
+    display: flex; /* Use flexbox for consistent layout */
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+.metric-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 8px -4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    color: #f8fafc;
+    text-align: center;
+}
+
+.total-patients-card {
+    background-color: #6b7280;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 7px -3px rgba(0, 0, 0, 0.07);
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #4a5568;
+}
+
+
+.total-patients-content {
+    text-align: center;
+    width: 100%;
+}
+
+.total-patients-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 0.5rem;
+}
+
+.total-patients-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+.tables-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.table-card {
+    background-color: #1d4ed8;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 7px -3px rgba(0, 0, 0, 0.07);
+    border: 1px solid #4338ca;
+}
+
+.table-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #f8fafc;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #242424;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.data-table thead th {
+    padding: 1rem;
+    text-align: left;
+    color: #9ca3af;
+    font-weight: 500;
+    border-bottom: 1px solid #4a5568;
+}
+
+.data-table tbody tr:nth-child(odd) {
+    background-color: #2d3748;
+}
+
+.data-table tbody td {
+    padding: 1rem;
+    text-align: left;
+    color: #f8fafc;
+}
+
+.data-table tbody tr:hover {
+    background-color: #4a5568;
+}
+
+@media (max-width: 768px) {
+    .metrics-container {
+        flex-direction: column;
+    }
+
+    .metric-card {
+        flex: none;
+        width: 100%;
+    }
+
+    .tables-container {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-container {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
